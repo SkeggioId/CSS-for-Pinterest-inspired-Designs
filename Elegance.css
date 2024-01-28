@@ -1,0 +1,104 @@
+/* 1. Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+/* 2. Flexible Grid Layout */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+
+/* 3. Fluid Images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 4. Typography with REMs for Scalability */
+body {
+  font-size: 100%; /* Default to 16px */
+}
+
+h1 {
+  font-size: 2.5rem; /* scales with body font-size */
+}
+
+/* 5. Centering with Flexbox */
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 6. Aspect Ratio Boxes */
+.aspect-ratio-box {
+  height: 0;
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  position: relative;
+}
+
+.aspect-ratio-box-inner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* 7. Responsive Font Sizes with Viewport Units */
+h1 {
+  font-size: 5vw; /* Viewport width scaling */
+}
+
+/* 8. CSS Variables for Consistent Theming */
+:root {
+  --main-color: #3498db;
+  --accent-color: #e74c3c;
+}
+
+body {
+  color: var(--main-color);
+}
+
+/* 9. Hiding Elements Responsively */
+.hide-on-mobile {
+  display: none;
+}
+
+@media screen and (min-width: 769px) {
+  .hide-on-mobile {
+    display: block;
+  }
+}
+
+/* 10. Breakpoints Mixin for Maintainable Media Queries */
+@mixin breakpoint($size) {
+  @if $size == small {
+    @media (max-width: 640px) { @content; }
+  } @else if $size == medium {
+    @media (max-width: 768px) { @content; }
+  } @else if $size == large {
+    @media (max-width: 1024px) { @content; }
+  }
+}
+
+@include breakpoint(small) {
+  body { font-size: 14px; }
+}
